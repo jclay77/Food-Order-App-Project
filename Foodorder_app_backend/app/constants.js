@@ -2,7 +2,7 @@ const JWT_SECRET_KEY = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrst
 
 const SERVER_PORT = 8080;
 
-const DATABASE_URI = 'YOUR_CONNECTION_STRING/DATABASE_NAME'
+const DATABASE_URI = 'mongodb+srv://jclay77TX:J4sp3r2011!@database-cluster.a4obv5n.mongodb.net/food-order-app';
 
 const TOKEN_EXPIRATION_DURATION = '7d';
 

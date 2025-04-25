@@ -1,8 +1,9 @@
 const FooditemModel = require("../../models/fooditemModel");
 
-const createFooditem = async (name, description, image, categoryId, cuisineId, isVeg) => {
+const createFooditem = async (ID, name, description, image, categoryId, cuisineId, isVeg) => {
   try {
     const newFooditem = await FooditemModel.create({
+      id: ID,
       name: name,
       description: description,
       image: image,
@@ -19,8 +20,8 @@ const createFooditem = async (name, description, image, categoryId, cuisineId, i
 const editFooditem = async (fooditemId, newData) => {
   try {
     const fooditemObject = await FooditemModel.findOne({
-      _id: fooditemId,
-      isActive: true,
+      ID: fooditemId, isActive: true,
+      //changed from _id to customID because _id was not searching for items withouut using
     });
 
     if (!fooditemObject) {
@@ -33,6 +34,8 @@ const editFooditem = async (fooditemId, newData) => {
     fooditemObject.categoryId = newData.categoryId;
     fooditemObject.cuisineId = newData.cuisineId;
     fooditemObject.isVeg = newData.isVeg;
+    fooditemObject.updatedTs = new Date();
+    fooditemObject.isActive = newData.isActive;
 
     const updatedFooditem = await fooditemObject.save();
     return updatedFooditem;
@@ -60,7 +63,10 @@ const deleteFooditem = async (fooditemId) => {
 const getFooditem = async (fooditemId) => {
   try {
     const fooditemObject = await FooditemModel.findOne({
-      _id: fooditemId,
+      ID: fooditemId,
+      //changed from _id to customID because _d was not searching for items withouut using 
+      //the 20 letter objectID (hexadecimal) format value string "_id" original _id: fooditemId
+
       isActive: true,
     });
     return fooditemObject;

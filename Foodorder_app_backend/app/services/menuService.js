@@ -128,6 +128,9 @@ const getMenuByRestaurant = expressAsyncHandler(async (req, res) => {
           fooditemImage,
           fooditemPrice,
         }));
+
+        console.log(req.query);
+        //Added per Office Hour Mentor Instructor
         if (req.query) {
           if (Object.keys(req.query)[0] == "cuisine") {
             // Step 1: Find cuisine id of the matching cuisine
