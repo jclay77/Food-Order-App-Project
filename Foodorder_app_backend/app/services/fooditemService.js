@@ -4,9 +4,9 @@ const expressAsyncHandler = require("express-async-handler");
 const createFooditem = expressAsyncHandler(async (req, res) => {
   /* COMPLETE TASK 1.a HERE */
   try {
-    const { ID, name, description, image, categoryId, cuisineId, isVeg } = req.body;
+    const { name, description, image, categoryId, cuisineId, isVeg } = req.body;
     const result = await fooditemRepository.createFooditem(
-      ID,
+      
       name,
       description,
       image,
