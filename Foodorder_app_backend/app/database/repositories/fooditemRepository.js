@@ -1,6 +1,6 @@
 const FooditemModel = require("../../models/fooditemModel");
 
-const createFooditem = async (ID, name, description, image, categoryId, cuisineId, isVeg) => {
+const createFooditem = async (name, description, image, categoryId, cuisineId, isVeg) => {
   try {
     const newFooditem = await FooditemModel.create({
       name: name,
@@ -32,9 +32,7 @@ const editFooditem = async (fooditemId, newData) => {
     fooditemObject.categoryId = newData.categoryId;
     fooditemObject.cuisineId = newData.cuisineId;
     fooditemObject.isVeg = newData.isVeg;
-    fooditemObject.updatedTs = new Date();
-    fooditemObject.isActive = newData.isActive;
-
+    
     const updatedFooditem = await fooditemObject.save();
     return updatedFooditem;
   } catch (err) {
